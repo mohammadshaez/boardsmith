@@ -8,7 +8,13 @@ const { healthCheck } = require("./controllers/healthController");
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-app.use(cors({ origin: true, credentials: true }));
+// app.use(cors({ origin: true, credentials: true }));
+app.use(
+  cors({
+    origin: ["http://localhost:3000", "https://boardsmith-rose.vercel.app/"],
+    credentials: true,
+  }),
+);
 app.use(express.json());
 
 app.get("/health", healthCheck);
