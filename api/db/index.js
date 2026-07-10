@@ -5,31 +5,34 @@ let pool;
 let dbReady = false;
 
 async function initializeDatabase() {
-  const { DB_HOST, DB_USER, DB_PASSWORD, DB_NAME } = process.env;
-
-  if (!DB_HOST || !DB_USER || !DB_PASSWORD || !DB_NAME) {
-    console.warn(
-      "MySQL environment variables are not fully set. Backend will start in degraded mode.",
-    );
-    return;
-  }
+  const DB_HOST = process.env.DB_HOST || "localhost";
+  const DB_USER = process.env.DB_USER || "root";
+  const DB_PASSWORD = process.env.DB_PASSWORD || "";
+  const DB_NAME = process.env.DB_NAME || "dashboard_app";
+  const DB_PORT = process.env.DB_PORT || 3306;
 
   try {
     const adminPool = createPool({
       host: DB_HOST,
       user: DB_USER,
       password: DB_PASSWORD,
+      port: DB_PORT,
       waitForConnections: true,
       connectionLimit: 10,
     });
 
-    await adminPool.query(`CREATE DATABASE IF NOT EXISTS \`${DB_NAME}\``);
+    // Creating database only for local MySQL
+    // Railway already gives you an existing database
+    if (DB_HOST === "localhost") {
+      await adminPool.query(`CREATE DATABASE IF NOT EXISTS \`${DB_NAME}\``);
+    }
 
     pool = createPool({
       host: DB_HOST,
       user: DB_USER,
       password: DB_PASSWORD,
       database: DB_NAME,
+      port: DB_PORT,
       waitForConnections: true,
       connectionLimit: 10,
     });
