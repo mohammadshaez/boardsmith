@@ -1,5 +1,6 @@
 function parseJson(value, fallback) {
-  if (!value) return fallback;
+  if (value === undefined || value === null) return fallback;
+  if (typeof value === "object") return value;
   try {
     return JSON.parse(value);
   } catch {
