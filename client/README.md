@@ -15,7 +15,7 @@ It provides a drag-and-drop canvas for creating dashboard layouts with charts, t
 1. Install dependencies:
 
    ```bash
-   cd compact-react
+   cd client
    npm install
    ```
 

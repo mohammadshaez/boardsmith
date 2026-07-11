@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Toaster } from "sonner";
 import Gallery from "@/pages/Gallery";
 import Editor from "@/pages/Editor";
+import { Analytics } from "@vercel/analytics/react";
 
 function App() {
   useEffect(() => {
@@ -19,6 +20,7 @@ function App() {
         </Routes>
       </BrowserRouter>
       <Toaster position="bottom-right" richColors />
+      <Analytics />
     </div>
   );
 }
