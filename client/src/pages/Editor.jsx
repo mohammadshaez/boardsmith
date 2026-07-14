@@ -14,7 +14,7 @@ import {
   Layers,
   Copy,
 } from "lucide-react";
-import { api, fileUrl } from "@/lib/api";
+import { api, resolveFileUrl } from "@/lib/api";
 import CanvasElement from "@/components/editor/CanvasElement";
 import PropertiesPanel from "@/components/editor/PropertiesPanel";
 import RichTextToolbar from "@/components/editor/RichTextToolbar";
@@ -168,7 +168,7 @@ export default function Editor() {
         headers: { "Content-Type": "multipart/form-data" },
       });
       const el = DEFAULT_ELEMENTS.image();
-      el.props.src = fileUrl(data.id);
+      el.props.src = resolveFileUrl(data);
       setElements((s) => [...s, el]);
       setSelectedId(el.id);
       toast.success("Image added", { id: t });
