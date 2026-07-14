@@ -10,5 +10,11 @@ export const api = axios.create({
 
 export const fileUrl = (id) => `${API_BASE}/files/${id}`;
 
-export const resolveFileUrl = (payload) =>
-  payload?.url || (payload?.id ? fileUrl(payload.id) : "");
+export const resolveFileUrl = (payload) => {
+  if (!payload) return "";
+  if (typeof payload === "string") return payload;
+  if (payload.url) return payload.url;
+  if (payload.s3Url) return payload.s3Url;
+  if (payload.id) return fileUrl(payload.id);
+  return "";
+};

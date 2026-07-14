@@ -167,8 +167,12 @@ export default function Editor() {
       const { data } = await api.post("/upload", form, {
         headers: { "Content-Type": "multipart/form-data" },
       });
+      const uploadedUrl = resolveFileUrl(data);
+      if (!uploadedUrl) {
+        throw new Error("No image URL returned from upload endpoint");
+      }
       const el = DEFAULT_ELEMENTS.image();
-      el.props.src = resolveFileUrl(data);
+      el.props.src = uploadedUrl;
       setElements((s) => [...s, el]);
       setSelectedId(el.id);
       toast.success("Image added", { id: t });

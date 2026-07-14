@@ -59,6 +59,11 @@ export default function CanvasElement({ element, isSelected, onUpdateProps }) {
   }
 
   if (element.type === "image") {
+    const imageSrc =
+      typeof element.props.src === "string"
+        ? element.props.src
+        : element.props.src?.url || element.props.src?.s3Url || "";
+
     return (
       <div
         className="w-full h-full overflow-hidden flex items-center justify-center bg-neutral-100"
@@ -68,9 +73,9 @@ export default function CanvasElement({ element, isSelected, onUpdateProps }) {
         }}
         data-testid={`el-image-${element.id}`}
       >
-        {element.props.src ? (
+        {imageSrc ? (
           <img
-            src={element.props.src}
+            src={imageSrc}
             alt=""
             className="w-full h-full object-cover pointer-events-none"
             draggable={false}

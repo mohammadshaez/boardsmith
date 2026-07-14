@@ -40,7 +40,7 @@ async function uploadFile(req, res) {
         Expires: 60 * 60,
       });
 
-      return res.json({ id: key, url: signedUrl });
+      return res.json({ id: key, url: signedUrl, s3Url: signedUrl });
     } catch (err) {
       console.error("S3 upload failed", err && err.message ? err.message : err);
       return res
