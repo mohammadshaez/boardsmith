@@ -43,12 +43,10 @@ async function uploadFile(req, res) {
       return res.json({ id: key, url: signedUrl, s3Url: signedUrl });
     } catch (err) {
       console.error("S3 upload failed", err && err.message ? err.message : err);
-      return res
-        .status(500)
-        .json({
-          error: "S3 upload failed",
-          details: err && err.message ? err.message : "Unknown error",
-        });
+      return res.status(500).json({
+        error: "S3 upload failed",
+        details: err && err.message ? err.message : "Unknown error",
+      });
     }
   }
 
