@@ -8,15 +8,13 @@ A production-ready dashboard builder built with **React**, **Node.js**, **Expres
 
 **Application:** http://13.54.117.190
 
-> Replace with your custom domain once configured.
-
 ---
 
 ## ✨ Features
 
 - 📊 Create and manage dashboards
 - 🧩 Widget-based dashboard builder
-- 📁 Image upload support
+- 📁 AWS S3 for image uploads
 - 💾 MySQL database integration
 - 🔗 RESTful API
 - 📱 Responsive user interface
@@ -267,21 +265,6 @@ During deployment, the following production issues were resolved:
 
 ---
 
-## 📸 Screenshots
-
-Add screenshots here.
-
-Example:
-
-```
-screenshots/
-├── dashboard.png
-├── editor.png
-└── deployment.png
-```
-
----
-
 ## 🚧 Future Improvements
 
 - HTTPS using Let's Encrypt
@@ -291,7 +274,6 @@ screenshots/
 - Docker Compose
 - AWS RDS
 - Redis
-- AWS S3 for image uploads
 - CloudFront CDN
 - Terraform
 - Monitoring with CloudWatch
@@ -321,14 +303,6 @@ This project provided hands-on experience with:
 - Deployment Automation
 
 ---
-
-## 📄 License
-
-This project is for learning and portfolio purposes.
-
-# Superhuman Assignment
-
-This repo contains a dashboard builder project with a React + Vite frontend and an Express backend.
 
 ## Repository structure
 
@@ -376,7 +350,6 @@ This repo contains a dashboard builder project with a React + Vite frontend and 
 ## Deployment notes
 
 - The backend is deployed to EC2 and uses nginx as a reverse proxy.
-- If uploads fail with `413 Request Entity Too Large`, increase `client_max_body_size` in nginx.
 
 ## Project files
 
@@ -390,3 +363,7 @@ This repo contains a dashboard builder project with a React + Vite frontend and 
 - `npm install` — install dependencies in a package folder
 - `npm run dev` — start Vite development server in `client`
 - `node server.js` — run the backend server in `api`
+
+## 📄 License
+
+This project is for learning and portfolio purposes.
