@@ -18,7 +18,7 @@ app.use(
         "http://localhost:5173",
         "http://127.0.0.1:5173",
         "https://boardsmith-rose.vercel.app",
-        "http://16.176.15.82",
+        "http://13.54.117.190",
       ];
 
       if (!origin || allowedOrigins.includes(origin)) {
