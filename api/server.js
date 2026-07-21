@@ -19,6 +19,9 @@ app.use(
         "http://127.0.0.1:5173",
         "https://boardsmith-rose.vercel.app",
         "http://13.54.117.190",
+        "https://13.54.117.190",
+        "http://13.54.117.190:5173",
+        "https://13.54.117.190:5173",
       ];
 
       if (!origin || allowedOrigins.includes(origin)) {
